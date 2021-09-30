@@ -4,7 +4,7 @@ pipeline {
     maven 'maven'
   }
    parameters {
-    string defaultValue: '', description: '', name: 'INPUT_LOCATION', trim: true
+    string defaultValue: '1', description: 'mobTest', name: '/home/devuser/', trim: true
     }
   stages {
     stage ('Initialize') {
