@@ -1,4 +1,4 @@
-pipeline {
+/*pipeline {
   agent any 
   tools {
     maven 'maven'
@@ -118,4 +118,33 @@ pipeline {
     }*/
     
   }
+}
+*/
+
+
+
+
+
+pipeline {
+  agent { any }
+  parameters {
+    string defaultValue: '', description: '', name: 'INPUT_LOCATION', trim: true
+    }
+    stage('Analysis') {
+    steps {
+      script {
+        dir(INPUT_LOCATION) {
+          files = findFiles(glob: '*.*')
+        }       
+        files.each { f ->
+          def TASK_COLLECTION = [:]
+          TASK_COLLECTION["MOBSF"] =  {
+          }
+          TASK_COLLECTION["Qark"] = {
+          }
+          parallel(TASK_COLLECTION) 
+        }
+      }
+    }
+  } 
 }
