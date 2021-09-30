@@ -1,7 +1,7 @@
 pipeline {
   agent any 
   tools {
-    maven 'Maven'
+    maven 'maven'
   }
    parameters {
     string defaultValue: '', description: '', name: 'INPUT_LOCATION', trim: true
