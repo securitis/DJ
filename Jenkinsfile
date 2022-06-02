@@ -45,7 +45,7 @@ pipeline {
    
   stage ('Snyk') {
      steps {
-            sh 'snykSecurity organisation: 'self', projectName: 'CICDSelf', severity: 'high', snykInstallation: 'snyk', snykTokenId: 'snykid', targetFile: 'https://github.com/securitis/CICD''
+            sh 'snykSecurity failOnError: false, failOnIssues: false, organisation: 'self', projectName: 'CICDSelf', severity: 'high', snykInstallation: 'snyk', snykTokenId: 'snykid', targetFile: '/var/lib/jenkins/workspace/SelfCICD''
             //sh 'sudo cp -r /var/lib/jenkins/workspace/DevDemo /var/www/html' 
             //sh 'chmod +777 /var/lib/jenkins/workspace/CICD/target/WebApp'
             //sh 'ls /var/www/html'
