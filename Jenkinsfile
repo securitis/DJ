@@ -43,6 +43,16 @@ pipeline {
              }
              } 
    
+  stage ('Snyk') {
+     steps {
+            sh 'snykSecurity organisation: 'self', projectName: 'CICDSelf', severity: 'high', snykInstallation: 'snyk', snykTokenId: 'snykid', targetFile: 'https://github.com/securitis/CICD''
+            //sh 'sudo cp -r /var/lib/jenkins/workspace/DevDemo /var/www/html' 
+            //sh 'chmod +777 /var/lib/jenkins/workspace/CICD/target/WebApp'
+            //sh 'ls /var/www/html'
+            //sh 'sudo cp -r /var/lib/jenkins/OWASP-Dependency-Check/reports /var/www/html'
+       }
+    }
+      
    
    
    stage ('Build') {
@@ -61,7 +71,9 @@ pipeline {
             //sh 'sudo cp -r /var/lib/jenkins/OWASP-Dependency-Check/reports /var/www/html'
        }
     }
-      
+     
+    
+    
  
     
   }
